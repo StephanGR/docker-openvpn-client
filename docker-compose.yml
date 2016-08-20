@@ -1,0 +1,13 @@
+version: '2'
+services:
+  vpn-client:
+    build: .
+    privileged: true
+    environment:
+      TOKEN: 
+      USERID: 
+      TIMESWITCH: 10000
+      OPENVPN_USERNAME: 
+      OPENVPN_PASSWORD: 
+      OPENVPN_OPTS: "--inactive 3600 --ping 10 --ping-exit 60"
+    network_mode: "host"
