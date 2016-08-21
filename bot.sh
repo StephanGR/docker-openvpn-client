@@ -39,6 +39,12 @@ while [ "$1" != "" ]; do
         --text)
             TEXT=$VALUE
             ;;
+        --latitude)
+            LATITUDE=$VALUE
+            ;;
+        --longitude)
+            LONGITUDE=$VALUE
+            ;;
         *)
             echo "ERROR: unknown parameter \"$PARAM\""
             usage
@@ -47,7 +53,13 @@ while [ "$1" != "" ]; do
     esac
     shift
 done
-URL="https://api.telegram.org/bot$TOKEN/sendMessage"
+URLMSG="https://api.telegram.org/bot$TOKEN/sendMessage"
+URLLOC="https://api.telegram.org/bot$TOKEN/sendLocation"
 
-curl --data-urlencode -s --max-time $TIMEOUT -d "chat_id=$USERID&disable_web_page_preview=1&text=$TEXT" $URL > /dev/null
-echo "Send $TEXT to $USERID"
+if [[ -z "${LATITUDE}" && -z "${LATITUDE}" ]]; then
+    curl --data-urlencode -s --max-time $TIMEOUT -d "chat_id=$USERID&disable_web_page_preview=1&text=$TEXT" $URLMSG > /dev/null
+    echo "sendMessage $TEXT to $USERID"
+else
+   curl --data-urlencode -s --max-time $TIMEOUT -d "chat_id=$USERID&disable_web_page_preview=1&latitude=$LATITUDE&longitude=$LONGITUDE" $URLLOC > /dev/null
+   echo "sendLocation $LATITUDE,$LATITUDE to $USERID"
+fi
