@@ -1,6 +1,6 @@
 # docker-oepnvpn-client
 
-Small bash script run on docker for check kimsufi availability and notify by telegram
+Container openvpn client for PUREVPN provider with auto change IP/sevreur and notification by telegram
 
 ## Get kimsufi-availability
 
@@ -10,8 +10,7 @@ $ git clone https://github.com/cl3m3nt666/docker-openvpn-client.git
 
 ## How to use
 
-Set env value in docker-compose.yml :
-
+*Set env value in docker-compose.yml* :
 
 * TOKEN : 12345678:AZERTYAZERTYAZERTYAZERTY
 

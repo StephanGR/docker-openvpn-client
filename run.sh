@@ -21,7 +21,7 @@ while true; do
   LOCALISATION=`curl ipinfo.io/$IP | jq '.loc' | tr -d '"'`
   IFS=', ' read -r -a loc <<< "$LOCALISATION"
   SEPARATOR="-----------------------------------------"
-  if ["$IPORIGIN" == "$IP"]
+  if [[ "$IPORIGIN" == "$IP" ]]
   then
     echo "*** RETRY NEW VPN FILE ***"
   else
